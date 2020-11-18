@@ -45,7 +45,7 @@ function createMenuMultiBootstrap(int $parent, int $level, array $rub,string $no
 <ul class='dropdown-menu border-0 shadow'>";
             }
             // affichage du lien
-            $out .= "\n<li class='nav-item'><a  class='nav-link' href='?id={$item['idrubriques']}'>{$item['rubriques_name']}</a>";
+            $out .= "\n<li class='nav-item'><a  class='nav-link' href='?rub={$item['idrubriques']}'>{$item['rubriques_name']}</a>";
 
             // mise à jour du level précédent (pas d'ul class='menu')
             $prevLevel = $level;
