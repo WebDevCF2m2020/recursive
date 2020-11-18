@@ -56,7 +56,7 @@ $menu = createMenuMultiBootstrap(0, 0, $rubriques);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
 
-    <title>Starter Template · Bootstrap</title>
+    <title>Multilevel Bootstrap 4 Dropdown</title>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
@@ -65,14 +65,6 @@ $menu = createMenuMultiBootstrap(0, 0, $rubriques);
     <link rel="icon" href="img/favicon.ico">
 
     <style>
-        /*
-       *
-       * ==========================================
-       * CUSTOM UTIL CLASSES
-       * ==========================================
-       *
-       */
-
         .dropdown-submenu {
             position: relative;
         }
@@ -90,14 +82,6 @@ $menu = createMenuMultiBootstrap(0, 0, $rubriques);
             margin-top: 0px;
             margin-left: 0px;
         }
-
-        /*
-        *
-        * ==========================================
-        * FOR DEMO PURPOSES
-        * ==========================================
-        *
-        */
 
         body {
             background: #4568DC;
@@ -127,7 +111,7 @@ $menu = createMenuMultiBootstrap(0, 0, $rubriques);
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
     <div class="container">
-        <a href="07-menu-recursif-bootrstap-PDO-datas.php" class="navbar-brand font-weight-bold">Multilevel Dropdown Perso</a>
+        <a href="08-menu-recursif-bootrstap-PDO-requete-imbriquee.php" class="navbar-brand font-weight-bold">Accueil</a>
         <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars"
                 aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
             <span class="navbar-toggler-icon"></span>
