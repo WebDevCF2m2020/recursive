@@ -18,34 +18,38 @@ $request = $connexion->query($sql);
 // si on récupère au moins une rubrique on la/les met dans un tableau indexé contenant des tableaux associatifs, sinon c'est un tableau vide
 $rubriques = ($request->rowCount()) ? $request->fetchAll(PDO::FETCH_ASSOC) : [];
 
-$idrub = (isset($_GET['rub'])&&ctype_digit($_GET['rub']))
-    ? (int) $_GET['rub']
+// récupération de l'idrubriques si elle existe
+$idrub = (isset($_GET['rub']) && ctype_digit($_GET['rub']))
+    ? (int)$_GET['rub']
     : 0;
 
 // rubrique sinon accueil
-$where = ($idrub)? "WHERE r.idrubriques = $idrub" : "";
+$where = ($idrub)
+    ? "WHERE r.idrubriques = $idrub"
+    : "";
 
-$sql="SELECT a.* FROM articles a 
+// sélection de tous les articles dans une rubrique ou sur l'accueil grâce au $where
+$sql = "SELECT a.* FROM articles a 
         INNER JOIN articles_has_rubriques h
         ON h.articles_idarticles = a.idarticles
         INNER JOIN rubriques r
         ON h.rubriques_idrubriques = r.idrubriques
         $where
-        ORDER BY articles_date DESC";
+        ORDER BY a.articles_date DESC";
 
 // récupération des articles
 $request = $connexion->query($sql);
 
-// si au moins un article
-if($request->rowCount()){
-    $articles = $request->fetchAll(PDO::FETCH_ASSOC);
-    $nbArticles = $request->rowCount();
-}else{
-    $articles = [];
-    $nbArticles = 0;
-}
+// nombre d'articles
+$nbArticles = $request->rowCount();
+
+// si on a au moins un article
+$articles = ($nbArticles)
+    ? $request->fetchAll(PDO::FETCH_ASSOC)
+    : [];
 
 
+// création du menu récursif
 $menu = createMenuMultiBootstrap(0, 0, $rubriques);
 
 ?>
@@ -103,12 +107,14 @@ $menu = createMenuMultiBootstrap(0, 0, $rubriques);
             }
         }
     </style>
-    <!-- Custom styles for this template -->
 
+    <!-- Custom styles for this template -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
+<!-- Navigation menu -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
     <div class="container">
         <a href="08-menu-recursif-bootrstap-PDO-requete-imbriquee.php" class="navbar-brand font-weight-bold">Accueil</a>
@@ -119,62 +125,64 @@ $menu = createMenuMultiBootstrap(0, 0, $rubriques);
 
         <div id='navbarContent' class='collapse navbar-collapse'>
             <?= $menu ?>
-
         </div>
     </div>
 </nav>
-<hr>
 
-<!-- For demo purpose -->
+<!-- sous entête -->
 <section class="py-5 text-white">
     <div class="container py-4">
         <div class="row">
             <div class="col-lg-9 mx-auto text-center">
-                <h1 class="display-4">Bootstrap 4 Multilevel dropdown</h1>
-                <p class="lead mb-0">Nos articles</p>
-                <p class="lead">Nombre d'articles : <?=$nbArticles?></p>
+                <h1 class="display-5">Bootstrap 4 Multilevel dropdown</h1>
+                <h2 class="display-5">Nos articles</h2>
+                <hr>
+                <p class="lead">Nombre d'articles : <?= $nbArticles ?></p>
+                <hr>
             </div>
         </div>
+        <!-- container principal -->
+        <main role="main" class="container">
+            <div class="starter-template">
+                <?php
+                foreach ($articles as $item):
+                    ?>
+                    <h3><?= $item['articles_title'] ?></h3>
+                    <p><?= $item['articles_text'] ?></p>
+                    <p><?= $item['articles_date'] ?></p>
+                    <hr>
+                <?php
+                endforeach;
+                ?>
+            </div>
 
-<main role="main" class="container">
+        </main>
+        <!-- /.container -->
 
-    <div class="starter-template">
-        <?php
-        foreach($articles as $item):
-        ?>
-        <h3><?=$item['articles_title']?></h3>
-        <p><?=$item['articles_text']?></p>
-        <p><?=$item['articles_date']?></p><hr>
-        <?php
-        endforeach;
-        ?>
-    </div>
+        <!-- JS Jquery and Bootstrap -->
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(function () {
+                // ------------------------------------------------------- //
+                // Multi Level dropdowns
+                // ------------------------------------------------------ //
+                $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-</main><!-- /.container -->
-<script src="js/jquery-3.5.1.slim.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-
-<script>
-    $(function () {
-        // ------------------------------------------------------- //
-        // Multi Level dropdowns
-        // ------------------------------------------------------ //
-        $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            $(this).siblings().toggleClass("show");
+                    $(this).siblings().toggleClass("show");
 
 
-            if (!$(this).next().hasClass('show')) {
-                $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-            }
-            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-                $('.dropdown-submenu .show').removeClass("show");
+                    if (!$(this).next().hasClass('show')) {
+                        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                    }
+                    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                        $('.dropdown-submenu .show').removeClass("show");
+                    });
+
+                });
             });
-
-        });
-    });
-</script>
+        </script>
 </body>
 </html>
