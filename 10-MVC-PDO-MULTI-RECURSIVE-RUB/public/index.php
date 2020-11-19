@@ -3,6 +3,8 @@
 
 // dependencies
 require_once "../config.php";
+require_once "../model/menuMultiBootstrap.model.php";
+require_once "../model/rubriques.model.php";
 
 // connexion
 try {
@@ -14,3 +16,9 @@ try {
     $erreur .= $e->getMessage();
     die($erreur);
 }
+
+// controllers
+require_once "../controller/public.controller.php";
+
+// view
+require_once "../view/home.view.php";
