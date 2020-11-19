@@ -22,27 +22,12 @@ if($idrub){
 
 // accueil
 }else{
-    // sélection de tous les articles sur l'accueil
-    $sql = "SELECT a.* FROM articles a 
-        INNER JOIN articles_has_rubriques h
-        ON h.articles_idarticles = a.idarticles
-        INNER JOIN rubriques r
-        ON h.rubriques_idrubriques = r.idrubriques
-        ORDER BY a.articles_date DESC";
+
 }
 
 
 
-// récupération des articles
-$request = $connexion->query($sql);
 
-// nombre d'articles
-$nbArticles = $request->rowCount();
-
-// si on a au moins un article
-$articles = ($nbArticles)
-    ? $request->fetchAll(PDO::FETCH_ASSOC)
-    : [];
 
 
 

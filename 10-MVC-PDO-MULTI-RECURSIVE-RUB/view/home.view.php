@@ -43,7 +43,7 @@
                 <h1 class="display-5">Bootstrap 4 Multilevel dropdown</h1>
                 <h2 class="display-5">Nos articles</h2>
                 <hr>
-                <p class="lead">Nombre d'articles : <?= $nbArticles ?></p>
+                <p class="lead">Nombre d'articles : <?= count($allArticles) ?></p>
                 <hr>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <main role="main" class="container">
             <div class="starter-template">
                 <?php
-                foreach ($articles as $item):
+                foreach ($allArticles as $item):
                     ?>
                     <h3><?= $item['articles_title'] ?></h3>
                     <p><?= $item['articles_text'] ?></p>
