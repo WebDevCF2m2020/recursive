@@ -23,7 +23,7 @@
 <!-- Navigation menu -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
     <div class="container">
-        <a href="08-menu-recursif-bootrstap-PDO-requete-imbriquee.php" class="navbar-brand font-weight-bold">Accueil</a>
+        <a href="./" class="navbar-brand font-weight-bold">Accueil</a>
         <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars"
                 aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
             <span class="navbar-toggler-icon"></span>
