@@ -25,7 +25,7 @@ $idrub = (isset($_GET['rub']) && ctype_digit($_GET['rub']))
 
 // rubrique sinon accueil
 $where = ($idrub)
-    ? "WHERE r.idrubriques = $idrub"
+    ? "WHERE r.idrubriques = $idrub OR r.idrubriques IN (SELECT ri.idrubriques FROM rubriques ri WHERE $idrub=ri.rubriques_idrubriques) "
     : "";
 
 // sélection de tous les articles dans une rubrique ou sur l'accueil grâce au $where
