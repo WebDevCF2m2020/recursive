@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
 
-    <title>Homepage</title>
+    <title>Catégorie : </title>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-lg-9 mx-auto text-center">
                 <h1 class="display-5">Menu Bootstrap multi-niveaux</h1>
-                <h2 class="display-5">Homepage</h2>
+                <h2 class="display-5">Catégorie : </h2>
                 <hr>
                 <p class="lead">Nombre d'articles : <?= count($allArticles) ?></p>
                 <hr>
