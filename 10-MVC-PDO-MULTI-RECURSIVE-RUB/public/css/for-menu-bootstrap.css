@@ -35,3 +35,10 @@ code {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 }
+a:hover {
+    background:#3b9cea;
+    color:#fff;
+}
+a {
+    color:#fff;
+}

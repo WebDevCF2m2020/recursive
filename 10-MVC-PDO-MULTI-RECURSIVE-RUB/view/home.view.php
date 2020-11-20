@@ -52,8 +52,20 @@
             <div class="starter-template">
                 <?php
                 foreach ($allArticles as $item):
+                    $idrubriques = explode(",", $item['idrubriques']);
+                    $rubriques_name = explode("|||", $item['rubriques_name']);
                     ?>
                     <h3><?= $item['articles_title'] ?></h3>
+                    <h5><?php
+                        $i = 0;
+                        foreach ($idrubriques as $idRub):
+                            ?>
+                            <a href="?rub=<?=$idRub?>" title="<?=$rubriques_name[$i]?>"><?=$rubriques_name[$i]?></a> |
+                        <?php
+                        $i++;
+                        endforeach;
+                        ?>
+                    </h5>
                     <p><?= $item['articles_text'] ?></p>
                     <p><?= $item['articles_date'] ?></p>
                     <hr>
