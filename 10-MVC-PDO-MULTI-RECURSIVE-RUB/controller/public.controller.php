@@ -16,4 +16,10 @@ if(!$idrub) {
 
 // view
     require_once "../view/home.view.php";
+}else{
+
+    $allArticles = selectAllArticlesCateg($connexion,$idrub);
+// view
+    require_once "../view/rubriques.view.php";
+
 }
