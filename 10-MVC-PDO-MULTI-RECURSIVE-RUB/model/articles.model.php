@@ -6,9 +6,9 @@ function selectAllArticles(PDO $c){
        GROUP_CONCAT(r.idrubriques) AS idrubriques, 
        GROUP_CONCAT(r.rubriques_name SEPARATOR '|||') AS rubriques_name
         FROM articles a 
-            INNER JOIN articles_has_rubriques h
+            LEFT JOIN articles_has_rubriques h
                 ON h.articles_idarticles = a.idarticles
-            INNER JOIN rubriques r
+            LEFT JOIN rubriques r
                 ON h.rubriques_idrubriques = r.idrubriques
         GROUP BY a.idarticles
         ORDER BY a.articles_date DESC";
