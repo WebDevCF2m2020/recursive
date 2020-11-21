@@ -58,12 +58,16 @@
                     <h3><?= $item['articles_title'] ?></h3>
                     <h5><?php
                         $i = 0;
-                        foreach ($idrubriques as $idRub):
+                        //var_dump($idrubriques);
+                        // pas de rubriques
+                        if(!empty($idrubriques[0])):
+                            foreach ($idrubriques as $idRub):
                             ?>
                             <a href="?rub=<?=$idRub?>" title="<?=$rubriques_name[$i]?>"><?=$rubriques_name[$i]?></a> |
                         <?php
-                        $i++;
-                        endforeach;
+                            $i++;
+                            endforeach;
+                            endif;
                         ?>
                     </h5>
                     <p><?= $item['articles_text'] ?></p>
