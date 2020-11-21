@@ -51,13 +51,15 @@
         <main role="main" class="container">
             <div class="starter-template">
                 <?php
+                $i=1;
                 foreach ($allArticles as $item):
                     ?>
-                    <h3><?= $item['articles_title'] ?></h3>
+                    <h3><?=$i." ) ". $item['articles_title'] ?></h3>
                     <p><?= $item['articles_text'] ?></p>
                     <p><?= $item['articles_date'] ?></p>
                     <hr>
                 <?php
+                $i++;
                 endforeach;
                 ?>
             </div>
