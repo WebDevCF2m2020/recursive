@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
 
-    <title>Catégorie : </title>
+    <title>Catégorie : <?=$rubriques['rubriques_name']?></title>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
@@ -41,7 +41,8 @@
         <div class="row">
             <div class="col-lg-9 mx-auto text-center">
                 <h1 class="display-5">Menu Bootstrap multi-niveaux</h1>
-                <h2 class="display-5">Catégorie : </h2>
+                <h2 class="display-5">Catégorie : <?=$rubriques['rubriques_name']?> </h2>
+                <h5 class="text-left"> <?php if(!empty($rubriques['rubriques_text'])) echo "<hr>Description : ".$rubriques['rubriques_text']?> </h5>
                 <hr>
                 <p class="lead">Nombre d'articles : <?= count($allArticles) ?></p>
                 <hr>

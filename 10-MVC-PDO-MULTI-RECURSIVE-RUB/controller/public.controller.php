@@ -18,6 +18,12 @@ if(!$idrub) {
     require_once "../view/home.view.php";
 }else{
 
+    $rubriques = selectRubriquesById($connexion,$idrub);
+    if(empty($rubriques)) {
+        header("Location: ./");
+        exit();
+    }
+
     $allArticles = selectAllArticlesCateg($connexion,$idrub);
 // view
     require_once "../view/rubriques.view.php";
