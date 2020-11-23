@@ -23,7 +23,9 @@ if(!$idrub) {
         header("Location: ./");
         exit();
     }
-
+    // create Arial
+    $arial = createRubriquesAriane($connexion,$idrub);
+    // articles
     $allArticles = selectAllArticlesCateg($connexion,$idrub);
 // view
     require_once "../view/rubriques.view.php";

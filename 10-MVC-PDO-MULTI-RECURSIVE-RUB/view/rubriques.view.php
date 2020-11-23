@@ -52,6 +52,7 @@
         <main role="main" class="container">
             <div class="starter-template">
                 <?php
+                var_dump($arial);
                 $i=1;
                 foreach ($allArticles as $item):
                     ?>

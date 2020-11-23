@@ -16,3 +16,18 @@ function selectRubriquesById(PDO $c,int $id){
     $recup->execute();
     return ($recup->rowCount()) ? $recup->fetch(PDO::FETCH_ASSOC) : [];
 }
+
+// fonction fil d'ariane
+function createRubriquesAriane(PDO $c, int $parent,int $tab=0){
+    $actual[$tab] = selectRubriquesById( $c,$parent);
+    //var_dump($actual[$tab]);
+    if(isset($actual[$tab]['rubriques_idrubriques'])){
+        $id = (int)$actual[$tab]['rubriques_idrubriques'];
+        $tab++;
+        $actual[$tab] = createRubriquesAriane( $c,$id,$tab);
+
+    }else{
+        return $actual;
+    }
+
+}
