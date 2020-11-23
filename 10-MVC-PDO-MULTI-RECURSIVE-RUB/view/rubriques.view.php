@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
 
-    <title>Catégorie : <?=$rubriques['rubriques_name']?></title>
+    <title>Catégorie : <?= $rubriques['rubriques_name'] ?></title>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
@@ -41,8 +41,8 @@
         <div class="row">
             <div class="col-lg-9 mx-auto text-center">
                 <h1 class="display-5">Menu Bootstrap multi-niveaux</h1>
-                <h2 class="display-5">Catégorie : <?=$rubriques['rubriques_name']?> </h2>
-                <h5 class="text-left"> <?php if(!empty($rubriques['rubriques_text'])) echo "<hr>Description : ".$rubriques['rubriques_text']?> </h5>
+                <h2 class="display-5">Catégorie : <?= $rubriques['rubriques_name'] ?> </h2>
+                <h5 class="text-left"> <?php if (!empty($rubriques['rubriques_text'])) echo "<hr>Description : " . $rubriques['rubriques_text'] ?> </h5>
                 <hr>
                 <p class="lead">Nombre d'articles : <?= count($allArticles) ?></p>
                 <hr>
@@ -52,16 +52,31 @@
         <main role="main" class="container">
             <div class="starter-template">
                 <?php
-                var_dump($arial);
-                $i=1;
+                foreach ($arial as $menuItem):
+                    echo "<a href='?rub={$menuItem['idrubriques']}'>{$menuItem['rubriques_name']}</a> > ";
+                endforeach;
+                ?>
+                <hr>
+                <?php
                 foreach ($allArticles as $item):
                     ?>
-                    <h3><?=$i." ) ". $item['articles_title'] ?></h3>
+                    <h3><?= $item['articles_title'] ?></h3>
+                    <h5><?php
+                        $categ = explode("|||", $item['categ']);
+                        if (!empty($categ[0])):
+                            foreach ($categ as $cat):
+                                $categAll = explode("---", $cat);
+                                ?>
+                                <a href="?rub=<?= $categAll[0] ?>" title="<?= $categAll[1] ?>"><?= $categAll[1] ?></a> |
+                            <?php
+                            endforeach;
+                        endif;
+                        ?>
+                    </h5>
                     <p><?= $item['articles_text'] ?></p>
                     <p><?= $item['articles_date'] ?></p>
                     <hr>
                 <?php
-                $i++;
                 endforeach;
                 ?>
             </div>

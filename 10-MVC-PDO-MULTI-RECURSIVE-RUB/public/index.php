@@ -9,7 +9,7 @@ require_once "../model/articles.model.php";
 
 // connexion
 try {
-    $connexion = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET.";port=".DB_PORT, DB_USER, DB_PWD);
+    $connexion = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET.";port=".DB_PORT, DB_USER, DB_PWD,[PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION]);
 
 }catch(PDOException $e){
     $erreur = $e->getCode();
