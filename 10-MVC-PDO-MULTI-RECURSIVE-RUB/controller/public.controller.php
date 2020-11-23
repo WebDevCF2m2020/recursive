@@ -18,7 +18,7 @@ if(!$idrub) {
     require_once "../view/home.view.php";
 }else{
 
-    $rubriques = selectRubriquesById($connexion,$idrub);
+    $rubriques = selectAllFromRubriquesById($connexion,$idrub);
     if(empty($rubriques)) {
         header("Location: ./");
         exit();
