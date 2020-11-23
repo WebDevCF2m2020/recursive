@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 22 nov. 2020 à 15:36
+-- Généré le : lun. 23 nov. 2020 à 14:07
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.9
 
@@ -31,7 +31,16 @@ CREATE TABLE IF NOT EXISTS `articles` (
                                           `articles_text` text NOT NULL,
                                           `articles_date` datetime DEFAULT CURRENT_TIMESTAMP,
                                           PRIMARY KEY (`idarticles`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `articles`
+--
+
+INSERT INTO `articles` (`idarticles`, `articles_title`, `articles_text`, `articles_date`) VALUES
+(1, 'Royal Sporting Club Anderlecht', 'Le Royal Sporting Club d\'Anderlecht, abrégé en RSC Anderlecht, est un club de football belge fondé en 1908 et basé à Anderlecht (situé au sud-ouest de Bruxelles), qui est une commune de la région de Bruxelles-Capitale.\r\n\r\nLe club omnisports du même nom est fondé le 27 mai 1999. Sa devise est « Mens sana in corpore sano » (en français : « un esprit sain dans un corps sain »). Le club omnisports a donné naissance à différentes associations, dont RSCA-Rugby, RSCA-Athlétisme et la section football, fondée deux jours après la création du club qui porte le matricule 35. Il existe également une section féminine depuis 1971.\r\n\r\nIl s\'agit du club de football belge le plus titré. Promu pour la première fois en première division du championnat de Belgique en 1921, un niveau qu\'il n\'a plus quitté depuis 1935, Anderlecht obtient son premier titre national en 1947. Depuis lors, Anderlecht a remporté le championnat à trente-quatre reprises et n\'a jamais terminé la saison en deçà de la sixième place. Sur la scène intérieure, le club a également enlevé neuf Coupes de Belgique. Le club a eu la chance de voir évoluer plusieurs de ses cadres en équipe nationale belge.', '2020-11-23 11:01:10'),
+(2, 'Royal Antwerp Football Club', 'Le Royal Antwerp Football Club , familièrement appelé l\'Antwerp, est un club de football belge situé à Anvers. Fondé vers 1880, ce club est reconnu comme étant le plus ancien club de football belge, et porte à ce titre le matricule 1.\r\n\r\nLe Royal Antwerp FC est un des dix clubs fondateurs de la Fédération belge de football et un des sept fondateurs du championnat de Belgique. Il est présent sans interruption en séries nationales depuis la saison 1901-1902. Il a disputé 96 saisons en première division belge, ce qui a longtemps constitué un record, seulement dépassé par le Standard de Liège en 2015-2016.\r\n\r\nEntre 1957 et 1994, le Royal Antwerp FC a vécu 55 rencontres européennes et a disputé une finale de Coupe d\'Europe des Vainqueurs de Coupe (CE2).\r\n\r\nLe club évolue en Division 1A lors de la saison 2019-2020, ce qui constitue sa 116e saison dans les divisions nationales.', '2020-11-23 14:38:40'),
+(3, 'K Beerschot Antwerpen Club', 'Le Koninklijke Beerschot Antwerpen Club est un ancien club de football belge basé à Anvers. Fondé sous le nom de FC Germinal Ekeren en 1920, il reprend le nom de Beerschot après son déménagement au Kiel en 1999 après la faillite du K Beerschot VAC. \r\n\r\nLe club troque également ses couleurs habituelles, jaune et rouge, pour reprendre le mauve et blanc du club disparu. Relégué en Division 2 et privé de licence pour le football rémunéré pour la saison 2013-2014, le club dépose le bilan en juin 2013 et est radié par l\'URBSFA le 1er juillet 2013. Son matricule était le 3530.', '2020-11-23 14:43:43');
 
 -- --------------------------------------------------------
 
@@ -47,6 +56,21 @@ CREATE TABLE IF NOT EXISTS `articles_has_rubriques` (
                                                         KEY `fk_articles_has_rubriques_rubriques1_idx` (`rubriques_idrubriques`),
                                                         KEY `fk_articles_has_rubriques_articles1_idx` (`articles_idarticles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `articles_has_rubriques`
+--
+
+INSERT INTO `articles_has_rubriques` (`articles_idarticles`, `rubriques_idrubriques`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(2, 4),
+(3, 4),
+(1, 6),
+(1, 7),
+(2, 11),
+(3, 11);
 
 -- --------------------------------------------------------
 
