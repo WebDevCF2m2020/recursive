@@ -32,5 +32,5 @@ function selectAllArticlesCateg(PDO $c, int $idrub)
     $recup = $c->prepare($sql);
     $recup->bindValue(":idrubriques",$idrub,PDO::PARAM_INT);
     $recup->execute();
-    return ($recup->rowCount()) ? $recup->fetch(PDO::FETCH_ASSOC) : [];
+    return ($recup->rowCount()) ? $recup->fetchAll(PDO::FETCH_ASSOC) : [];
 }
